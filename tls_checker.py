@@ -21,13 +21,17 @@ TELEGRAM_CHAT_ID = "2030658684"  # Ton chat ID
 
 
 
+
+
 def setup_driver():
     options = Options()
-    options.binary_location = "/usr/bin/google-chrome"  # ✔️ correspond à Google Chrome
+    options.binary_location = "/usr/bin/google-chrome"
     options.add_argument("--headless")
+    options.add_argument("--disable-gpu")
     options.add_argument("--no-sandbox")
     options.add_argument("--disable-dev-shm-usage")
-    options.add_argument("--disable-gpu")
+    options.add_argument("--remote-debugging-port=9222")
+    options.add_argument("--window-size=1920x1080")
 
     service = Service(ChromeDriverManager().install())
     return webdriver.Chrome(service=service, options=options)
