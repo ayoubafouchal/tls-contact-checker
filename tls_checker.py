@@ -19,15 +19,15 @@ TELEGRAM_CHAT_ID = "2030658684"  # Ton chat ID
 # === SETUP CHROME (Headless) ===
 
 
+
+
 def setup_driver():
     options = Options()
     options.add_argument("--headless")
     options.add_argument("--no-sandbox")
     options.add_argument("--disable-dev-shm-usage")
-    options.binary_location = "/usr/bin/chromium"  # 🔥 Le chemin important
 
-    service = Service("/usr/bin/chromedriver")
-    return webdriver.Chrome(service=service, options=options)
+    return webdriver.Chrome(ChromeDriverManager().install(), options=options)
 
 
 # === ENVOI DU MESSAGE TELEGRAM ===
