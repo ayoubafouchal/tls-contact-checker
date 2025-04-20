@@ -27,7 +27,10 @@ def setup_driver():
     options.add_argument("--no-sandbox")
     options.add_argument("--disable-dev-shm-usage")
 
-    return webdriver.Chrome(ChromeDriverManager().install(), options=options)
+    # Créer le service avec le chemin auto-téléchargé par webdriver-manager
+    service = Service(ChromeDriverManager().install())
+
+    return webdriver.Chrome(service=service, options=options)
 
 
 # === ENVOI DU MESSAGE TELEGRAM ===
