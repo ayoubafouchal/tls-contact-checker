@@ -1,9 +1,9 @@
 FROM python:3.11-slim
 
-# Installer Chromium et ses dépendances
+# Installer Chromium + dépendances nécessaires
 RUN apt-get update && apt-get install -y \
-    chromium \
     chromium-driver \
+    chromium \
     fonts-liberation \
     libnss3 \
     libxss1 \
@@ -13,7 +13,7 @@ RUN apt-get update && apt-get install -y \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-# Définir les chemins (Selenium s'en sert)
+# Définir les chemins (pour Selenium)
 ENV CHROME_BIN=/usr/bin/chromium
 ENV CHROMEDRIVER_BIN=/usr/bin/chromedriver
 
@@ -24,5 +24,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copier le script
 COPY tls_checker.py .
 
-# Commande de démarrage
 CMD ["python", "tls_checker.py"]
