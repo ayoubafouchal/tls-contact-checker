@@ -23,13 +23,13 @@ TELEGRAM_CHAT_ID = "2030658684"  # Ton chat ID
 
 def setup_driver():
     options = Options()
+    options.binary_location = "/usr/bin/chromium"  # Obligatoire si tu installes Chromium
     options.add_argument("--headless")
     options.add_argument("--no-sandbox")
     options.add_argument("--disable-dev-shm-usage")
+    options.add_argument("--disable-gpu")
 
-    # Créer le service avec le chemin auto-téléchargé par webdriver-manager
     service = Service(ChromeDriverManager().install())
-
     return webdriver.Chrome(service=service, options=options)
 
 
