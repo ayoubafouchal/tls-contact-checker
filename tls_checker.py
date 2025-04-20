@@ -23,7 +23,7 @@ TELEGRAM_CHAT_ID = "2030658684"  # Ton chat ID
 
 def setup_driver():
     options = Options()
-    options.binary_location = "/usr/bin/chromium"  # Obligatoire si tu installes Chromium
+    options.binary_location = "/usr/bin/google-chrome"  # ✔️ correspond à Google Chrome
     options.add_argument("--headless")
     options.add_argument("--no-sandbox")
     options.add_argument("--disable-dev-shm-usage")
